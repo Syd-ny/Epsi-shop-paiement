@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../bo/article.dart';
@@ -6,7 +7,6 @@ import '../bo/cart.dart';
 
 class CartPage extends StatelessWidget {
   CartPage({super.key});
-  final List<Article> listArticles = <Article>[];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,26 +23,23 @@ class CartPage extends StatelessWidget {
                   );
           },
         ),
-        floatingActionButton: payment_page_button(),
+        floatingActionButton: PaymentPageButton(),
     );
   }
 }
 
-class payment_page_button extends StatelessWidget {
-  const payment_page_button({
+class PaymentPageButton extends StatelessWidget {
+  const PaymentPageButton({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Consumer<Cart>(
-      builder: (context,cart,child)  {
+      builder: (BuildContext context, Cart cart, Widget? child)  {
         return cart.listArticles.isNotEmpty
           ? FloatingActionButton.extended (
-              onPressed: () {
-                //Redirection page paiement
-                Navigator.pushNamed(context, '/payment');
-              },
+              onPressed: () => context.go("/payment"),
               label: Text("procéder au paiement"),
               icon: Icon(Icons.payment),
             )
@@ -68,7 +65,7 @@ class ListCart extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Votre panier toal est de "),
+                Text("Votre panier total est de "),
                 Text(
                   prixEuro,
                   style: TextStyle(fontWeight: FontWeight.bold),
