@@ -12,6 +12,7 @@ final _router = GoRouter(routes: [
   GoRoute(path: "/", builder: (_, __) => HomePage(), routes: [
     GoRoute(path: "cart", builder: (_, __) => CartPage()),
     GoRoute(path: "aboutus", builder:(_,__) => AboutUsPage()),
+    GoRoute(path: "payment", builder:(_,__) => PaymentPage()),
     GoRoute(
         path: "detail",
         builder: (_, state) => DetailPage(article: state.extra as Article)),

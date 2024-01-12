@@ -22,7 +22,22 @@ class CartPage extends StatelessWidget {
                     prixEuro: cart.getTotalPrice(),
                   );
           },
-        ));
+        ),
+        floatingActionButton: Consumer<Cart>(
+          builder: (context,cart,child)  {
+            return cart.listArticles.isNotEmpty
+              ? FloatingActionButton.extended (
+                  onPressed: () {
+                    //Redirection page paiement
+                    Navigator.pushNamed(context, '/payment');
+                  },
+                  label: Text("procéder au paiement"),
+                  icon: Icon(Icons.payment),
+                )
+              : Container(); //Conteneur vide si panier vide
+          },
+        ),
+    );
   }
 }
 
