@@ -13,7 +13,8 @@ class Cart with ChangeNotifier {
       "${listArticles.fold(0, (prev, art) => prev + art.prix) / 100}€";
 
   double getSubtotal() {
-    return _listArticles.fold(0, (total, current) => (total + current.prix)/100);
+    double subtotal = _listArticles.fold(0, (total, current) => total + current.prix) / 100;
+    return double.parse(subtotal.toStringAsFixed(2));
   }
 
   double getTax() {
@@ -22,7 +23,9 @@ class Cart with ChangeNotifier {
   }
 
   double getTotal() {
-    return getSubtotal() + getTax();
+    double subtotal = getSubtotal();
+    double tax = getTax();
+    return double.parse((subtotal + tax).toStringAsFixed(2));
   }
 
   void add(Article article) {

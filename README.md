@@ -1,5 +1,5 @@
 # epsi_shop
-
+Sydney Millon
 A new Flutter project.
 
 ## Getting Started

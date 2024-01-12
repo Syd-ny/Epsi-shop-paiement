@@ -30,7 +30,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
+        primarySwatch: Colors.purple,
+        primaryColor: Colors.greenAccent,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.purple, // Couleur de texte pour les TextButton
+          ),
+        ),
         useMaterial3: true,
       ),
       routerConfig: _router,
