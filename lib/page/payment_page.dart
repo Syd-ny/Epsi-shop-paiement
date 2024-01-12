@@ -38,6 +38,16 @@ class PaymentPage extends StatelessWidget {
                     _buildPriceRow(context, "Total:", "$total €", isTotal: true),
                     _buildClientInfoCard(),
                     _buildPaymentOptions(),
+                    Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Text(
+                        "En procédant au paiement, vous acceptez nos conditions générales de vente. Toutes les transactions sont sécurisées et cryptées. Les options de paiement disponibles sont les suivantes : carte de crédit/débit, PayPal et virement bancaire. En cas de paiement par carte, le montant total sera débité de votre carte au moment de l'achat. Pour les paiements par PayPal, vous serez redirigé vers le site de PayPal pour finaliser votre achat en toute sécurité. Toutes les informations relatives à votre commande, y compris le montant total facturé, seront fournies avant la soumission de votre commande. En cas de retard de paiement, des intérêts de retard peuvent être appliqués conformément à la législation en vigueur. Pour toute question ou préoccupation concernant votre paiement, veuillez contacter notre service client.",
+                        style: TextStyle(
+                          fontSize: 6, // Taille du texte
+                          color: Colors.black, // Couleur du texte
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               )
