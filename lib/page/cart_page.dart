@@ -23,20 +23,31 @@ class CartPage extends StatelessWidget {
                   );
           },
         ),
-        floatingActionButton: Consumer<Cart>(
-          builder: (context,cart,child)  {
-            return cart.listArticles.isNotEmpty
-              ? FloatingActionButton.extended (
-                  onPressed: () {
-                    //Redirection page paiement
-                    Navigator.pushNamed(context, '/payment');
-                  },
-                  label: Text("procéder au paiement"),
-                  icon: Icon(Icons.payment),
-                )
-              : Container(); //Conteneur vide si panier vide
-          },
-        ),
+        floatingActionButton: payment_page_button(),
+    );
+  }
+}
+
+class payment_page_button extends StatelessWidget {
+  const payment_page_button({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<Cart>(
+      builder: (context,cart,child)  {
+        return cart.listArticles.isNotEmpty
+          ? FloatingActionButton.extended (
+              onPressed: () {
+                //Redirection page paiement
+                Navigator.pushNamed(context, '/payment');
+              },
+              label: Text("procéder au paiement"),
+              icon: Icon(Icons.payment),
+            )
+          : Container(); //Conteneur vide si panier vide
+      },
     );
   }
 }
